@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colgate Plant Tour</title>
+    <style>
+        /* Base styling for all devices */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            background-color: #ed1b24;
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 150px 20px 20px; /* Increased top padding */
+            box-sizing: border-box;
+            width: 100%;
+            overflow-y: auto;
+            justify-items: center;
+        }
+        .area-button {
+            background-color: #ed1b24; /* Start with Colgate Red */
+            color: #fff; /* White text */
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid #ed1b24;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s, background-color 0.3s, color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            user-select: none; /* Disable text selection */
+        }
+        .area-button:hover {
+            transform: scale(1.05); /* Slightly enlarge button on hover */
+        }
+        
+        .area-button.active {
+            background-color: #edebeb; /* Light Gray when active */
+            color: #ed1b24; /* Red text when active */
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 600px) {
+            .area-button {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .area-button {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Colgate-Palmolive Myanmar</h1>
+    </header>
+    <div class="container">
+        <a href="filling_area.html" class="area-button">Filling Area</a>
+        <a href="making_area.html" class="area-button">Making Area</a>
+        <a href="tube_area.html" class="area-button">Tube Making Area</a>
+        <a href="warehouse.html" class="area-button">Warehouse Area</a>
+        <a href="security_gate.html" class="area-button">Security Gate</a>
+        <a href="plant.html" class="area-button">Plant</a>
+    </div>
+
+    <script>
+        // JavaScript for toggle effect
+        const buttons = document.querySelectorAll('.area-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
