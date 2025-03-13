@@ -21,17 +21,21 @@
             text-align: center;
             background-color: #ed1b24;
             color: #fff;
-            padding: 20px 0;
+            padding: 15px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             z-index: 1000;
         }
+        header h1 {
+            font-size: 20px; /* Default size */
+            margin: 0;
+        }
         .container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            padding: 150px 20px 20px; /* Increased top padding */
+            padding: 130px 20px 20px; /* Adjusted top padding */
             box-sizing: border-box;
             width: 100%;
             overflow-y: auto;
@@ -66,12 +70,15 @@
         /* Responsive adjustments for different screen sizes */
         @media (max-width: 600px) {
             header {
-                padding: 15px 0;
-                font-size: 18px;
+                padding: 12px 0;
+            }
+
+            header h1 {
+                font-size: 16px; /* Smaller font for mobile */
             }
 
             .container {
-                padding-top: 120px; /* Reduced padding to give more space */
+                padding-top: 110px; /* Adjusted padding for mobile */
                 grid-template-columns: 1fr; /* Single column for mobile */
             }
 
@@ -84,12 +91,15 @@
 
         @media (min-width: 600px) and (max-width: 1199px) {
             header {
-                padding: 18px 0;
-                font-size: 20px;
+                padding: 15px 0;
+            }
+
+            header h1 {
+                font-size: 18px; /* Medium size for tablets */
             }
 
             .container {
-                padding-top: 130px; /* Adjusted padding for tablets */
+                padding-top: 120px; /* Adjusted padding for tablets */
                 grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
             }
 
@@ -102,12 +112,15 @@
 
         @media (min-width: 1200px) {
             header {
-                padding: 20px 0;
-                font-size: 24px;
+                padding: 18px 0;
+            }
+
+            header h1 {
+                font-size: 22px; /* Slightly smaller than before for laptops */
             }
 
             .container {
-                padding-top: 150px; /* Standard padding for laptop/desktop */
+                padding-top: 130px; /* Standard padding for laptop/desktop */
                 grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
             }
 
