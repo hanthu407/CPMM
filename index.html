@@ -33,16 +33,16 @@
         }
         .container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr); /* Three columns for all screens */
             gap: 20px;
-            padding: 130px 20px 20px; /* Adjusted top padding */
+            padding: 130px 20px 20px;
             box-sizing: border-box;
             width: 100%;
             overflow-y: auto;
             justify-items: center;
         }
         .area-button {
-            background-color: #ed1b24; /* Start with Colgate Red */
+            background-color: #ed1b24; /* Colgate Red */
             color: #fff; /* White text */
             text-align: center;
             text-decoration: none;
@@ -59,33 +59,34 @@
             user-select: none; /* Disable text selection */
         }
         .area-button:hover {
-            transform: scale(1.05); /* Slightly enlarge button on hover */
+            transform: scale(1.05);
         }
         
-        .area-button.active {
-            background-color: #edebeb; /* Light Gray when active */
-            color: #ed1b24; /* Red text when active */
+        .area-button:active {
+            transform: scale(0.95); /* Slightly shrink when clicked */
         }
 
-        /* Responsive adjustments for different screen sizes */
+        .area-button.active {
+            background-color: #ed1b24 !important; /* Keep red even when active */
+            color: #fff !important;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 600px) {
             header {
                 padding: 12px 0;
             }
-
             header h1 {
-                font-size: 16px; /* Smaller font for mobile */
+                font-size: 16px;
             }
-
             .container {
-                padding-top: 110px; /* Adjusted padding for mobile */
-                grid-template-columns: 1fr; /* Single column for mobile */
+                padding-top: 110px;
+                grid-template-columns: repeat(3, 1fr); /* Three columns for mobile */
             }
-
             .area-button {
-                width: 80px;  /* Smaller button size for mobile */
+                width: 80px;
                 height: 80px;
-                font-size: 14px;  /* Smaller text for mobile */
+                font-size: 14px;
             }
         }
 
@@ -93,16 +94,13 @@
             header {
                 padding: 15px 0;
             }
-
             header h1 {
-                font-size: 18px; /* Medium size for tablets */
+                font-size: 18px;
             }
-
             .container {
-                padding-top: 120px; /* Adjusted padding for tablets */
-                grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+                padding-top: 120px;
+                grid-template-columns: repeat(3, 1fr); /* Three columns for tablets */
             }
-
             .area-button {
                 width: 100px;
                 height: 100px;
@@ -114,16 +112,13 @@
             header {
                 padding: 18px 0;
             }
-
             header h1 {
-                font-size: 22px; /* Slightly smaller than before for laptops */
+                font-size: 22px;
             }
-
             .container {
-                padding-top: 130px; /* Standard padding for laptop/desktop */
+                padding-top: 130px;
                 grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
             }
-
             .area-button {
                 width: 150px;
                 height: 150px;
