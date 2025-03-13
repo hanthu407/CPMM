@@ -63,18 +63,58 @@
             color: #ed1b24; /* Red text when active */
         }
 
-        /* Responsive adjustments */
-        @media (min-width: 600px) {
+        /* Responsive adjustments for different screen sizes */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 0;
+                font-size: 18px;
+            }
+
+            .container {
+                padding-top: 120px; /* Reduced padding to give more space */
+                grid-template-columns: 1fr; /* Single column for mobile */
+            }
+
             .area-button {
-                width: 120px;
-                height: 120px;
+                width: 80px;  /* Smaller button size for mobile */
+                height: 80px;
+                font-size: 14px;  /* Smaller text for mobile */
+            }
+        }
+
+        @media (min-width: 600px) and (max-width: 1199px) {
+            header {
+                padding: 18px 0;
+                font-size: 20px;
+            }
+
+            .container {
+                padding-top: 130px; /* Adjusted padding for tablets */
+                grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+            }
+
+            .area-button {
+                width: 100px;
+                height: 100px;
+                font-size: 16px;
             }
         }
 
         @media (min-width: 1200px) {
+            header {
+                padding: 20px 0;
+                font-size: 24px;
+            }
+
+            .container {
+                padding-top: 150px; /* Standard padding for laptop/desktop */
+                grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+            }
+
             .area-button {
                 width: 150px;
                 height: 150px;
+                font-size: 18px;
             }
         }
     </style>
