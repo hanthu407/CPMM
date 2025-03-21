@@ -19,10 +19,10 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 columns for desktop */
+            grid-template-columns: repeat(5, 1fr); /* 5 columns for desktop and tablets */
             gap: 20px;
             width: 80%;
-            max-width: 1200px; /* Increased max width for better space */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px 0;
         }
@@ -39,7 +39,7 @@
         }
 
         .grid-item img {
-            width: 100%;
+            width: 100%;  /* Makes the image responsive */
             height: auto;
             border-radius: 8px;
             max-height: 200px; /* Ensure consistent image size */
@@ -65,22 +65,40 @@
         /* Media query for tablets and mobile devices */
         @media (max-width: 1024px) {
             .grid-container {
-                grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+                grid-template-columns: repeat(5, 1fr); /* 5 columns for tablets */
             }
 
             .full-width-label {
-                grid-column: span 3; /* Full-width on tablets */
+                grid-column: span 5; /* Full-width on tablets */
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .grid-container {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile phones */
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for mobile phones */
             }
 
             .full-width-label {
-                grid-column: span 2; /* Full-width on mobile */
+                grid-column: span 3; /* Full-width on mobile */
             }
+        }
+
+        /* Ensuring the link area is properly sized */
+        .grid-item a {
+            display: block;
+            width: 100%;  /* Ensures the clickable area covers the entire grid item */
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: transparent; /* Background transparent */
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* Adding hover effect for better interaction */
+        .grid-item a:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -141,3 +159,4 @@
     </div>
 </body>
 </html>
+
