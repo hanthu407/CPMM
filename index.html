@@ -33,7 +33,7 @@
         }
         .container {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* Changed to 5 columns */
+            grid-template-columns: repeat(5, 1fr); /* 5 columns by default */
             gap: 20px;
             padding: 130px 20px 20px;
             box-sizing: border-box;
@@ -72,6 +72,7 @@
         }
 
         /* Responsive adjustments */
+        /* For mobile (phones) */
         @media (max-width: 600px) {
             header {
                 padding: 12px 0;
@@ -81,7 +82,7 @@
             }
             .container {
                 padding-top: 110px;
-                grid-template-columns: repeat(2, 1fr); /* Two columns for mobile */
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for mobile */
             }
             .area-button {
                 width: 80px;
@@ -90,7 +91,8 @@
             }
         }
 
-        @media (min-width: 600px) and (max-width: 1199px) {
+        /* For tablets and smaller desktops */
+        @media (min-width: 601px) and (max-width: 1199px) {
             header {
                 padding: 15px 0;
             }
@@ -99,7 +101,7 @@
             }
             .container {
                 padding-top: 120px;
-                grid-template-columns: repeat(3, 1fr); /* Three columns for tablets */
+                grid-template-columns: repeat(5, 1fr); /* 5 columns for tablets */
             }
             .area-button {
                 width: 100px;
@@ -108,6 +110,7 @@
             }
         }
 
+        /* For larger desktops */
         @media (min-width: 1200px) {
             header {
                 padding: 18px 0;
@@ -117,7 +120,7 @@
             }
             .container {
                 padding-top: 130px;
-                grid-template-columns: repeat(5, 1fr); /* Five columns for larger screens */
+                grid-template-columns: repeat(5, 1fr); /* 5 columns for large screens */
             }
             .area-button {
                 width: 120px; /* Adjusted size */
