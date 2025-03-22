@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #FF0000; /* Colgate Red */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        #form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 50px auto;
+        }
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #FF0000; /* Colgate Red */
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #FF0000; /* Colgate Red */
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #e60000; /* Darker Colgate Red for hover effect */
+        }
+        .error {
+            color: #FF0000; /* Colgate Red for error messages */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        CPMM Portal
+    </header>
+    <div id="form-container">
+        <h2>Login</h2>
+        <form id="login-form" onsubmit="return validate()">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="text" id="id" placeholder="Enter your ID" required>
+            <button type="submit">Submit</button>
+            <p id="error-message" class="error"></p>
+        </form>
+    </div>
+
+    <script>
+        // Object to store the list of names and IDs
+        const validEntries = {
+            "Raja Ram": "37200031",
+            "Yin Hnin Thet": "37200039",
+            "May Thandar Kyaw": "37200044",
+            "Bijay Gandhi": "37200047",
+            "Kyaw San Win": "37200048",
+            "Phyu Phyu Win": "37200049",
+            "Swe Zin Mar": "37200051",
+            "Myo Maung Maung Lwin": "37200052",
+            "Kyu Kyu Aung": "37200054",
+            "Aung Htwe Soe": "37200060",
+            "Aye Aye Khaing": "37200062",
+            "Aye Aye Naing": "37200063",
+            "Ye' Lwin Tun": "37200068",
+            "Hla Hla Htay": "37200079",
+            "Thuzar May": "37200081",
+            "Tin Tin Yu": "37200082",
+            "Thazin Khaing": "37200084",
+            "Tin Tin Cho": "37200085",
+            "Ashoe Kumar": "37200089",
+            "Rajesh Kumar": "37200090",
+            "Kyaw Naing Tun": "37200097",
+            "Yan Nat": "37200098",
+            "Hay Mar Oo": "37200113",
+            "Thandar Win": "37200115",
+            "Thandar Soe": "37200116",
+            "Aye Aye Mar": "37200118",
+            "Nyo Nyo Khine": "37200120",
+            "Aye Thet Hnin": "37200123",
+            "Larbarbu": "37200130",
+            "Tin Win Naing": "37200134",
+            "Nan Kumar": "37200137",
+            "Govinda": "37200139",
+            "Aung Soe": "37200143",
+            "Deepak Kumar": "37200145",
+            "Thiha Soe": "37200153",
+            "Thiha ": "37200154",
+            "Min Min Htet Ag": "37200155",
+            "Zaw Lwin Oo": "37200156",
+            "Kyaw Lwin": "37200160",
+            "Soe Naing": "37200163",
+            "Ramash Kumar": "37200164",
+            "Khin Mar Cho": "37200168",
+            "Saw Yu N'we": "37200170",
+            "Thet Yu Mon": "37200173",
+            "Sie Kumar": "37200174",
+            "Thazin Myint": "37200176",
+            "Hla Win Yee": "37200177",
+            "Nu Nu Win": "37200178",
+            "Soe Soe Khaing": "37200179",
+            "Myo Myo Zin": "37200180",
+            "Phyu Phyu Lin": "37200182",
+            "Aye Chan Mon": "37200183",
+            "Su Shwe Yee": "37200184",
+            "Hla Aung": "37200186",
+            "Nandar Win Su Aung": "37200188",
+            "Zaw Win Maung": "37200206",
+            "Ye' Naing Tun": "37200208",
+            "Min Arkar Soe": "37200217",
+            "Zaw Zaw Naing": "37200226",
+            "Chit Min Naung": "37200245",
+            "Kaday Kyaw": "37200247",
+            "Thin Thin Myat": "37200248",
+            "Thae Thae Su": "37200249",
+            "Nay Lin Aung": "37200251",
+            "Thet Maung Maung": "37200260",
+            "Kyaw Min Naing": "37200266",
+            "Thin Thin Htwe": "37200269",
+            "Tin Htay": "37200283",
+            "Aung Than Kyaw": "37200317",
+            "Bo Min Aung": "37200320",
+            "Myo Aung": "37200334",
+            "Naing Lin Tun": "37200335",
+            "Aung Thu Phyo": "37200353",
+            "Zaw Min Tun": "37200357",
+            "Anthony William": "37200360",
+            "Chit Thu Tun": "37200362",
+            "Nan Win": "37200363",
+            "Ye Paing Soe": "37200376",
+            "Kyaw Hsu Hein ": "37200383",
+            "Han Su Lynn": "37200389",
+            "Htet Myat Soe": "37200402",
+            "Aung Thu ": "37200403",
+            "Kay Khine Hnin": "37200410",
+            "Ngu Wah Hlaing": "37200414",
+            "Su Wai Mon": "37200424",
+            "Tin Win Aung": "37200435",
+            "Htet Htet Lin": "37200441",
+            "Ye Lin Aung": "37200447",
+            "Khin Thazin Aung ": "37200451",
+            "Myat Maw Kon": "37200457",
+            "Su Wai Phyo": "37200464",
+            "Seint Seint Lwin Oo": "37200470",
+            "Nwe Thazin Win": "37200473",
+            "May Phoo Thein": "37200474",
+            "Yin Yin Aung": "37200480",
+            "Thant Zin Aung": "37200484",
+            "Htet Min Paing": "37200490",
+            "Han Thu Phyo": "37200492",
+            "Hein Htet Soe": "37200493",
+            "Yar Zar": "37200496",
+            "Mya Linn Zaw": "37200499",
+            "Thet Htar Aung": "37200502",
+            "Ei Ei Zin": "37200505",
+            "Han Htoo Zin": "37200512",
+            "Ye Lin Maung": "37200513",
+            "Aung Min Thu": "37200517",
+            "Kyi Min Thant": "37200521",
+            "Tun Tun Win": "37200522",
+            "Lin Lin Kyaw": "37200529",
+            "Naing Lin Kyaw": "37200530",
+            "Sa Kyin Tun": "37200532",
+            "Soe Kyaw Swa Linn": "37200533",
+            "Thant Zin Oo": "37200534",
+            "Ar Kar Min": "37200535",
+            "Swan Arr Set": "37200536",
+            "Ye Minn Thein": "37200538",
+            "Wai Yan Aung": "37200540",
+            "Kyaw Phyo Oo": "37200542",
+            "Zaw Paing Tun": "37200543",
+            "Myo Yadanar Thein": "37200544",
+            "Wee Ra Lynn Htun": "37200545",
+            "Nyein Chan Oo": "37200546",
+            "Su Hlaing Win": "37200548",
+            "Phyo Thu": "37200550",
+            "Zar Ni Aung": "37200551",
+            "Min Ko Ko Hein": "37200552",
+            "Thu Zar Aye": "37200554",
+            "Hnin Lwin Aung": "37200556",
+            "Minn Ko Ko ": "37200558",
+            "Ei Ei Htwe": "37200561",
+            "Hlaing Yin Win": "37200562",
+            "One Ko Ko": "37200563",
+            "Kyaw Myo Htet Hlaing": "37200564",
+            "Htet Wai Yan": "37200566",
+            "Than Htike Aung": "37200567",
+            "Naing Lin Thet": "37200568",
+            "Thant Zin Oo": "37200569",
+            "Oakar Aung": "37200571"
+        };
+
+        function validate() {
+            const nameInput = document.getElementById('name').value;
+            const idInput = document.getElementById('id').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (validEntries[nameInput] === idInput) {
+                errorMessage.textContent = ""; // clear error message
+                window.location.href = 'index.html'; // redirect to main index
+                return false; // prevent default form submission
+            } else {
+                errorMessage.textContent = "Name or ID is wrong!";
+                return false; // prevent default form submission
+            }
+        }
+    </script>
+</body>
+</html>
